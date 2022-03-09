@@ -2,7 +2,7 @@
 
 namespace LW1
 {
-    public class IISHandler1 : IHttpHandler
+    public class GVAGetHandler : IHttpHandler
     {
         private static string ParmAName = "ParmA";
         private static string ParmBName = "ParmB";
