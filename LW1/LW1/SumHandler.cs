@@ -15,8 +15,8 @@ namespace LW1
 
         public void ProcessRequest(HttpContext context)
         {
-            string paramA = context.Request.QueryString[ParmAName];
-            string paramB = context.Request.QueryString[ParmBName];
+            string paramA = context.Request[ParmAName];
+            string paramB = context.Request[ParmBName];
             float X, Y;
             HttpResponse response = context.Response;
             if (!float.TryParse(paramA, out X) || !float.TryParse(paramB, out Y))
