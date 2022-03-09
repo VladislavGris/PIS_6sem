@@ -1,8 +1,9 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 
 namespace LW1
 {
-    public class GVAGetHandler : IHttpHandler
+    public class GVAPutHandler : IHttpHandler
     {
         private static string ParmAName = "ParmA";
         private static string ParmBName = "ParmB";
@@ -14,18 +15,17 @@ namespace LW1
 
         public void ProcessRequest(HttpContext context)
         {
-            string paramA = context.Request.QueryString[ParmAName];
-            string paramB = context.Request.QueryString[ParmBName];
+            string parmA = context.Request[ParmAName];
+            string parmB = context.Request[ParmBName];
             HttpResponse response = context.Response;
-            if(string.IsNullOrEmpty(paramA) || string.IsNullOrEmpty(paramB))
+            if (string.IsNullOrEmpty(parmA) || string.IsNullOrEmpty(parmB))
             {
                 response.Write("ParmA and/or ParmB is null or empty");
             }
             else
             {
-                response.Write($"GET-GVA:ParmA = {paramA},ParmB = {paramB}");
+                response.Write($"PUT-GVA:ParmA = {parmA},ParmB = {parmB}");
             }
-            
         }
     }
 }

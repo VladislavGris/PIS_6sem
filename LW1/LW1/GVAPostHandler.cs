@@ -23,7 +23,7 @@ namespace LW1
             }
             else 
             {
-                response.Write($"GVA:ParmA = {parmA},ParmB = {parmB}");
+                response.Write($"POST-GVA:ParmA = {parmA},ParmB = {parmB}");
             }
         }
     }

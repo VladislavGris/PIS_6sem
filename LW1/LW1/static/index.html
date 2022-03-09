@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result">Result: </div>
+    <button onclick="sendRequest()">Send request</button>
+    <script>
+        function sendRequest()
+        {
+            console.log("request");
+            let xhr = new XMLHttpRequest();
+            let params = "X=15&Y=10";
+            xhr.open("POST", "https://localhost:44388/mulxml", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                    document.getElementById("result").innerHTML = "Result: " + xhr.responseText;
+    }
+            }
+            xhr.send(params)
+        }
+    </script>
+</body>
+</html>
