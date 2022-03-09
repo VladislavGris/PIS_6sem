@@ -73,6 +73,7 @@
     <Compile Include="GVAGetHandler.cs" />
     <Compile Include="GVAPostHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SumHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
