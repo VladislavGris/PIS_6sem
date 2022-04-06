@@ -1,0 +1,26 @@
+﻿@using MVC.Models;
+@{
+    Layout = null;
+    User user = ViewBag.user;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    <h2>Update</h2>
+    <form action="/dict/updatesave" method="post">
+        <input type="hidden" name="id" value="@user.Id"/>
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="@user.Name" required/><br />
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" value="@user.Number" required/><br />
+        <input type="submit" name="Update" value="Update" />
+    </form>
+    <a href="/">Back</a>
+</body>
+</html>

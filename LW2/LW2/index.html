@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket</title>
+    <script>
+        var ws = null;
+        window.onload = ()=>{
+            bstart.disabled = false;
+            bstop.disabled = true;
+        }
+        function startWebSocket(){
+            if(ws === null || ws.CLOSED)
+            {
+                ws = new WebSocket('ws://localhost:45201/websocket');
+                ws.onopen = ()=>{ console.log("ws.open"); }
+                ws.onmessage = (e)=>{
+                    data.innerHTML += '\n'+ e.data;
+                    console.log(e.data);
+                }
+                bstart.disabled = true;
+                bstop.disabled = false;
+            }
+        }
+
+        function stopWebSocket(){
+            if(ws.OPEN){
+                ws.close(3001, "stopapp");
+            }
+            bstart.disabled = false;
+            bstop.disabled = true;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div>
+            <button id="bstart" onclick="startWebSocket()">Пуск</button>
+            <button id="bstop" onclick="stopWebSocket()">Стоп</button>
+        </div>
+        <div>
+            <textarea id="data" rows="20" cols="20"></textarea>
+        </div>
+    </div>
+</body>
+</html>
