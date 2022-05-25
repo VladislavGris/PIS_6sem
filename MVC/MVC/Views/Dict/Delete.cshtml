@@ -1,26 +1,23 @@
-﻿@using MVC.Models;
+﻿@using Data.Models;
 @{
-    Layout = null;
+    Layout = "~/Views/Dict/Layout.cshtml";
     User user = ViewBag.user;
 }
+<form action="/dict/deletesave" method="post">
+    <input type="hidden" name="id" value="@user.Id" />
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="@user.Name" disabled /><br />
+    <label for="phone">Phone:</label>
+    <input type="tel" name="phone" value="@user.Number" disabled /><br />
+    <input type="submit" name="Answer" value="Yes" />
+    <input type="submit" name="Answer" value="No" />
+</form>
 
-<!DOCTYPE html>
+@section Header{
+    <h1>Delete phone number?</h1>
+    <hr />
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-    <h2>Delete record?</h2>
-    <form action="/dict/deletesave" method="post">
-        <input type="hidden" name="id" value="@user.Id" />
-        <label for="name">Name:</label>
-        <input type="text" name="name" value="@user.Name" disabled /><br />
-        <label for="phone">Phone:</label>
-        <input type="tel" name="phone" value="@user.Number" disabled /><br />
-        <input type="submit" name="Answer" value="Yes" />
-        <input type="submit" name="Answer" value="No" />
-    </form>
-</body>
-</html>
+@section Footer{
+    <hr />
+}

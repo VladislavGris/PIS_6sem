@@ -1,0 +1,8 @@
+﻿@model Data.Models.User
+
+<tr>
+    <td>@Model.Name</td>
+    <td>@Model.Number</td>
+    <td><a href="/dict/update?id=@Model.Id">Update</a></td>
+    <td><a href="/dict/delete?id=@Model.Id">Delete</a></td>
+</tr>

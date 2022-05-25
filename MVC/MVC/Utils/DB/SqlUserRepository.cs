@@ -26,12 +26,21 @@ namespace MVC.Utils.DB
 
         public User Add(User entity)
         {
-            throw new NotImplementedException();
+            entity.Id = Guid.NewGuid();
+            var user = _dbContext.Users.Add(entity);
+            _dbContext.SaveChanges();
+            return user;
         }
 
         public User Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var user = _dbContext.Users.Where(u => u.Id == id).FirstOrDefault();
+            if(user != null)
+            {
+                _dbContext.Users.Remove(user);
+                _dbContext.SaveChanges();
+            }
+            return user;
         }
 
         public List<User> FindAll()
@@ -41,12 +50,19 @@ namespace MVC.Utils.DB
 
         public User FindOne(Guid id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Users.Where(u=>u.Id == id).FirstOrDefault();
         }
 
         public User Update(Guid id, User entity)
         {
-            throw new NotImplementedException();
+            var user = _dbContext.Users.Where(u => u.Id == id).FirstOrDefault();
+            if(user != null)
+            {
+                user.Name = entity.Name;
+                user.Number = entity.Number;
+                _dbContext.SaveChanges();
+            }
+            return user;
         }
     }
 }

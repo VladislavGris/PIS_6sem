@@ -1,24 +1,17 @@
-﻿
+﻿@using MVC.Helpers
 @{
-    Layout = null;
+    Layout = "~/Views/Dict/Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Add</title>
-</head>
-<body>
-    <h2>Add</h2>
-    <form action="/dict/addsave" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" required/><br />
-        <label for="phone">Phone:</label>
-        <input type="tel" name="phone" required/><br />
-        <input type="submit" name="Add" value="Add"/>
-    </form>
+    @Html.RenderAddForm()
     <a href="/">Back</a>
-</body>
-</html>
+
+
+@section Header{
+    <h1>Add phone number</h1>
+    <hr />
+}
+
+@section Footer{
+    <hr />
+}

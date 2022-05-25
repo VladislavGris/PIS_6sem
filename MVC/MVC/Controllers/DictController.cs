@@ -1,6 +1,6 @@
-﻿using MVC.Utils.DB;
+﻿using Data.Dictionary;
+using Data.Models;
 using System;
-using System.Diagnostics;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -8,11 +8,19 @@ namespace MVC.Controllers
     public class DictController : Controller
     {
         private static string _errorMessage;
+        private IPhoneDictionary<User> _phoneDictionary;
+
+        public DictController(IPhoneDictionary<User> pd)
+        {
+            _phoneDictionary = pd;
+        }
 
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.getAll = JsonUserRepository.GetInstance().FindAll();
+            //ViewBag.getAll = JsonUserRepository.GetInstance().FindAll();
+            //ViewBag.getAll = SqlUserRepository.GetInstance().FindAll();
+            ViewBag.getAll = _phoneDictionary.FindAll();
             ViewBag.errorMessage = _errorMessage;
             _errorMessage = "";
             return View();
@@ -33,8 +41,10 @@ namespace MVC.Controllers
                 _errorMessage = "Incorrect id";
                 return RedirectToAction("Index");
             }
-            Models.User user = JsonUserRepository.GetInstance().FindOne(id);
-            if(user == null)
+            //Models.User user = JsonUserRepository.GetInstance().FindOne(id);
+            //Models.User user = SqlUserRepository.GetInstance().FindOne(id);
+            User user = _phoneDictionary.FindOne(id);
+            if (user == null)
             {
                 _errorMessage = $"User with id {Request.Params["id"]} not found";
                 return RedirectToAction("Index");
@@ -52,7 +62,9 @@ namespace MVC.Controllers
                 _errorMessage = "Incorrect id";
                 return RedirectToAction("Index");
             }
-            Models.User user = JsonUserRepository.GetInstance().FindOne(id);
+            //Models.User user = JsonUserRepository.GetInstance().FindOne(id);
+            //Models.User user = SqlUserRepository.GetInstance().FindOne(id);
+            User user = _phoneDictionary.FindOne(id);
             if (user == null)
             {
                 _errorMessage = $"User with id {Request.Params["id"]} not found";
@@ -71,7 +83,9 @@ namespace MVC.Controllers
             }
             else
             {
-                JsonUserRepository.GetInstance().Add(new Models.User(Request.Params["name"], Request.Params["phone"]));
+                //JsonUserRepository.GetInstance().Add(new Models.User(Request.Params["name"], Request.Params["phone"]));
+                //SqlUserRepository.GetInstance().Add(new Models.User(Request.Params["name"], Request.Params["phone"]));
+                _phoneDictionary.Add(new User(Request.Params["name"], Request.Params["phone"]));
             }
             return RedirectToAction("Index");
         }
@@ -93,7 +107,9 @@ namespace MVC.Controllers
             }
             else
             {
-                JsonUserRepository.GetInstance().Update(id, new Models.User(name, phone));
+                //JsonUserRepository.GetInstance().Update(id, new Models.User(name, phone));
+                //SqlUserRepository.GetInstance().Update(id, new Models.User(name, phone));
+                _phoneDictionary.Update(id, new User(name, phone));
             }
             return RedirectToAction("Index");
         }
@@ -109,7 +125,9 @@ namespace MVC.Controllers
                     _errorMessage = "Incorrect id";
                     return RedirectToAction("Index");
                 }
-                JsonUserRepository.GetInstance().Delete(id);
+                //JsonUserRepository.GetInstance().Delete(id);
+                //SqlUserRepository.GetInstance().Delete(id);
+                _phoneDictionary.Delete(id);
             }
             return RedirectToAction("Index");
         }

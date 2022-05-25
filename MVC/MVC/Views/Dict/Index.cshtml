@@ -1,19 +1,13 @@
-﻿@using MVC.Models;
+﻿@using Data.Models;
 @{
-    Layout = null;
+    Layout = "~/Views/Dict/Layout.cshtml";
     List<User> users = ViewBag.getAll;
     string errorMessage = ViewBag.errorMessage;
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <h2>Phone numbers</h2>
+
+
     @if (!String.IsNullOrEmpty(errorMessage))
     {
         <div style="color:red">@errorMessage</div>
@@ -28,14 +22,17 @@
         </tr>
         @foreach (User u in users)
         {
-            <tr>
-                <td>@u.Name</td>
-                <td>@u.Number</td>
-                <td><a href="/dict/update?id=@u.Id">Update</a></td>
-                <td><a href="/dict/delete?id=@u.Id">Delete</a></td>
-            </tr>
+            Html.RenderPartial("PhoneBookRow", u);
         }
     </table>
     <a href="/dict/add">Add</a>
-</body>
-</html>
+
+
+@section Header{
+    <h1>Welcome to phone book</h1>
+    <hr/>
+}
+
+@section Footer{
+    <hr/>
+}
