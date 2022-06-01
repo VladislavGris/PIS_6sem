@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab7_Identity.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,23 +7,26 @@ using System.Web.Mvc;
 
 namespace Lab7_Identity.Controllers
 {
+    [AuthAction]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            //ViewBag.IsAuth = this.HttpContext.User.Identity.IsAuthenticated;
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            //ViewBag.IsAuth = this.HttpContext.User.Identity.IsAuthenticated;
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+            //ViewBag.IsAuth = this.HttpContext.User.Identity.IsAuthenticated;
 
             return View();
         }

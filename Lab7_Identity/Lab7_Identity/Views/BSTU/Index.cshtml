@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "BSTU Index";
+}
+
+<h2>BSTU Index</h2>
+
+@Html.ActionLink("FIT Index", "Index", "FIT")
+@Html.ActionLink("FLT Index", "Index", "FLT")
+@Html.ActionLink("FIE Index", "Index", "FIE")
+@if (ViewBag.IsAdmin)
+{
+    @Html.ActionLink("Config", "Config", "BSTU")
+}

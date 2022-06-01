@@ -58,11 +58,11 @@ namespace Lab7_Identity
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "812258151223-4qnjm94gu318oio01fegdb8j5b2g7aoj.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }

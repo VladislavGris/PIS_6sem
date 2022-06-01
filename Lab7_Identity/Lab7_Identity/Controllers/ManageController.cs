@@ -7,9 +7,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Lab7_Identity.Models;
+using Lab7_Identity.Filters;
 
 namespace Lab7_Identity.Controllers
 {
+    [AuthAction]
     [Authorize]
     public class ManageController : Controller
     {

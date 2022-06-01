@@ -169,12 +169,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BSTUController.cs" />
+    <Compile Include="Controllers\FIEController.cs" />
+    <Compile Include="Controllers\FITController.cs" />
+    <Compile Include="Controllers\FLTController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Filters\AuthActionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -236,6 +242,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\BSTU\Index.cshtml" />
+    <Content Include="Views\FIE\Index.cshtml" />
+    <Content Include="Views\FIT\Index.cshtml" />
+    <Content Include="Views\FLT\Index.cshtml" />
+    <Content Include="Views\FIT\FIT_IS.cshtml" />
+    <Content Include="Views\BSTU\Config.cshtml" />
+    <Content Include="Views\FIT\FIT_PI.cshtml" />
+    <Content Include="Views\FIT\FIT_ID.cshtml" />
+    <Content Include="Views\FLT\FLT_LV.cshtml" />
+    <Content Include="Views\FLT\FIT_LU.cshtml" />
+    <Content Include="Views\FLT\FIT_LZ.cshtml" />
+    <Content Include="Views\FIE\FIE_TM.cshtml" />
+    <Content Include="Views\FIE\FIE_UR.cshtml" />
+    <Content Include="Views\FIE\FIE_UP.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
